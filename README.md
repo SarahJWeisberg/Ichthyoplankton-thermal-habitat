@@ -1,4 +1,6 @@
 # Ichthyoplankton_thermal_habitat
 Code and data used for analyses and figures in Weisberg SJ, Brookes BJ, King MK, Charles K, Karkout H, Hadjiargyrou SL et al (2025) Thermal habitat shifts, but does not always widen, between embryonic and larval stages of fish. Submitted to Ecology Letters.
 
-All code is in Thermal_Habitat_Code.Rmd; data files used are in 'data' folder. Code was written in R version 4.4.2
+All code is in Thermal_Habitat_Code.Rmd; data files used are in 'data' folder. Code was written in R version 4.4.2.
+
+_This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an ‘as is’ basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government._
