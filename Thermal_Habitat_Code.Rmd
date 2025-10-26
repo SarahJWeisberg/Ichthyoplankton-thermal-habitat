@@ -1175,5 +1175,42 @@ Fig_3 <- Fig_3 + plot_layout(design=design) &
 Fig_3
 
 ggsave("Figure_3.png", Fig_3, width=11, height=10,units=c("in"))
+
 ```
+
+## Figure 4: Results comparisons, all species & analyses
+```{r}
+#make a data frame with all results
+spp <- c(rep("Silver Hake", 4),rep("Windowpane Flounder", 4), rep("Gulfstream Flounder", 4), rep("Fourspot Flounder", 4), rep("Butterfish", 4))
+stage <- rep(c(rep("Embryos",2), rep("Larvae",2)),5)
+analysis <- rep(rep(c("Bootstrap","Model"),2),5)
+Tmin <- c(12,12,13.5,13.5,09,09.5,10,10.5,14,14.5,16.5,17,12,11.5,17,18,14.5,14,17,17.5)
+Tmax <- c(19,18.5,23,22.5,17.5,17.5,19,20,NA,27.5,NA,27.5,NA,26.5,NA,27.5,NA,27.5,NA,27.5)
+results <- as.data.frame(cbind(spp,stage,analysis,Tmin,Tmax))
+results$Tmin <- as.numeric(results$Tmin)
+results$Tmax <- as.numeric(results$Tmax)
+results <- results %>% mutate(stage = fct_relevel(stage, "Embryos","Larvae"))
+
+Fig_4 <- ggplot(results, aes(y = stage, shape = analysis, color = stage)) +
+  geom_linerange(aes(xmin = Tmin, xmax = Tmax, colour = stage), size = 1.2, alpha = 0.6) +
+  geom_point(aes(x = Tmin, color = stage), size = 5, stroke = 1.5) +
+  geom_point(aes(x = Tmax, color = stage), size = 5, stroke = 1.5) + 
+  scale_shape_manual(values=c(3,4))+
+  scale_color_manual(values = c(my_pal[8],my_pal[12]))+
+  scale_fill_manual(values = c(my_pal[8],my_pal[12]))+
+  facet_grid(spp ~ ., scales = "free_y", space = "free_y", switch = "y")+
+  theme_Publication() +
+ labs(x = "Temperature") +
+  theme(
+    axis.title.y = element_blank(),
+    axis.line.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y  =element_blank(),
+    panel.grid.major.y = element_blank(),
+    theme(strip.placement = "outside")# labels on left
+  )
+
+Fig_4
+
+ggsave("Figure_4.png", Fig_4, width=11, height=10,units=c("in"))
 
